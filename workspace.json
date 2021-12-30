@@ -1,4 +1,8 @@
 {
   "version": 2,
-  "projects": {}
+  "projects": {
+    "my-site": "apps/my-site",
+    "my-site-e2e": "apps/my-site-e2e",
+    "ui-header": "libs/ui-header"
+  }
 }
