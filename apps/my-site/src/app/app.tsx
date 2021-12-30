@@ -3,14 +3,24 @@ import NxWelcome from './nx-welcome';
 
 import { Route, Link } from 'react-router-dom';
 import { PageTitle } from '@my-org/ui-header';
+import React, { useState, useEffect } from 'react';
+import { ApiResponse, API_URL } from '@my-org/api-interface';
 
 export function App() {
+  const [apiResponse, setApiResponse] = useState<ApiResponse>({ message: 'Loading...'});
+  useEffect(() => {
+    fetch(API_URL).then(r => r.json()).then(setApiResponse)
+  }, []);
   return (
     <>
       <PageTitle></PageTitle>
       <NxWelcome title="my-site" />
-      <div />
 
+      <main>
+        <p>
+          { apiResponse.message }
+        </p>
+      </main>
       {/* START: routes */}
       {/* These routes and navigation have been generated for you */}
       {/* Feel free to move and update them to fit your needs */}
